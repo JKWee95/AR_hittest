@@ -104,15 +104,15 @@
 				reticle.visible = false;
 				scene.add( reticle );
 				
-				const material1 = new THREE.MeshPhongMaterial( { color: 0xffffff * Math.random() } );
-				const mesh1 = new THREE.Mesh( geometry, material1 );
-				reticle.matrix.decompose( mesh1.position, mesh1.quaternion, mesh1.scale );
-				mesh1.scale.y = Math.random() * 2 + 1;
-				scene.add( mesh1 );
+				//const material1 = new THREE.MeshPhongMaterial( { color: 0xffffff * Math.random() } );
+				//const mesh1 = new THREE.Mesh( geometry, material1 );
+				//reticle.matrix.decompose( mesh1.position, mesh1.quaternion, mesh1.scale );
+				//mesh1.scale.y = Math.random() * 2 + 1;
+				//scene.add( mesh1 );
 				var loader = new GLTFLoader();
 				loader.load("https://dl.dropbox.com/s/f2ad4zk592f8dwt/thors_hammer.glb", function(gltf){
 					gltf.scene.position.set(0,0,0);
-					gltf.scene.scale.set(0.4,0.4,0.4);	
+					gltf.scene.scale.set(0.1,0.1,0.1);	
 					gltf.scene.rotation.set(0,0,0);
 					var arm=gltf.scene;
 					reticle.matrix.decompose( arm.position, arm.quaternion, arm.scale );
