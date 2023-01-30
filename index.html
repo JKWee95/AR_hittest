@@ -87,9 +87,9 @@
 						//mesh.scale.y = Math.random() * 2 + 1;
 						//scene.add( mesh );
 						var loader = new GLTFLoader();
-				                loader.load("https://dl.dropbox.com/s/f2ad4zk592f8dwt/thors_hammer.glb", function(gltf){
+				                loader.load("https://dl.dropbox.com/s/k5zl72fgo8yfb5i/thor_hammer_small.glb", function(gltf){
 					        gltf.scene.position.set(0,0,0);
-					        gltf.scene.scale.set(0.00001,0.00001,0.00001);	
+					        gltf.scene.scale.set(0.001,0.001,0.001);	
 					        gltf.scene.rotation.set(0,0,0);
 					        var arm=gltf.scene;
 					        reticle.matrix.decompose( arm.position, arm.quaternion, arm.scale );
@@ -118,9 +118,9 @@
 				//mesh1.scale.y = Math.random() * 2 + 1;
 				//scene.add( mesh1 );
 				var loader = new GLTFLoader();
-				loader.load("https://dl.dropbox.com/s/f2ad4zk592f8dwt/thors_hammer.glb", function(gltf){
+				loader.load("https://dl.dropbox.com/s/k5zl72fgo8yfb5i/thor_hammer_small.glb", function(gltf){
 					gltf.scene.position.set(0,0,0);
-					gltf.scene.scale.set(0.00001,0.00001,0.00001);	
+					gltf.scene.scale.set(0.001,0.001,0.001);	
 					gltf.scene.rotation.set(0,0,0);
 					var arm=gltf.scene;
 					reticle.matrix.decompose( arm.position, arm.quaternion, arm.scale );
