@@ -40,6 +40,8 @@
 			let hitTestSource = null;
 			let hitTestSourceRequested = false;
 
+			const tpCache = [];
+
 			init();
 			animate();
 
@@ -74,7 +76,6 @@
 				const geometry = new THREE.BoxGeometry( 0.1, 0.1, 0.1 );
 
 				var intersected_object = null;
-				const tpCache = [];
 
 				function onSelect() {
 
@@ -135,7 +136,23 @@
 
 			});
 
+			window.addEventListener("touchstart", start_handler, false);
 			window.addEventListener("touchmove", handle_pinch_zoom, false);
+
+			function start_handler(ev) {
+			  // If the user makes simultaneous touches, the browser will fire a
+			  // separate touchstart event for each touch point. Thus if there are
+			  // three simultaneous touches, the first touchstart event will have
+			  // targetTouches length of one, the second event will have a length
+			  // of two, and so on.
+			  ev.preventDefault();
+			  // Cache the touch points for later processing of 2-touch pinch/zoom
+			  if (ev.targetTouches.length === 2) {
+			    for (let i = 0; i < ev.targetTouches.length; i++) {
+			      tpCache.push(ev.targetTouches[i]);
+			    }
+			  }
+			}
 
 			// This is a very basic 2-touch move/pinch/zoom handler that does not include
 			// error handling, only handles horizontal moves, etc.
