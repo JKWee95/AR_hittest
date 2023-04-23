@@ -184,10 +184,10 @@
 			      //const PINCH_THRESHOLD = ev.target.clientWidth / 10;
 			      //if (diff1 >= PINCH_THRESHOLD && diff2 >= PINCH_THRESHOLD)
 			      //  ev.target.style.background = "green";
-			      var scale_factor = 0.01
+
 			      if (intersected_object){
-			      	intersected_object.scale.y = intersected_object.scale.y * (new_size/original_size) * scale_factor;
-			      	intersected_object.scale.x = intersected_object.scale.x * (new_size/original_size) * scale_factor;
+			      	intersected_object.scale.y = intersected_object.scale.y * (((new_size-original_size)/original_size)+1);
+			      	intersected_object.scale.x = intersected_object.scale.x * (((new_size-original_size)/original_size)+1);
 			      }
 			    } else {
 			      // empty tpCache
