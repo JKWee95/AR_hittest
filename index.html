@@ -41,6 +41,7 @@
 			let hitTestSourceRequested = false;
 
 			const tpCache = [];
+			var intersected_object = null;
 
 			init();
 			animate();
@@ -75,7 +76,7 @@
 				//const geometry = new THREE.CylinderGeometry( 0.1, 0.1, 0.2, 32 ).translate( 0, 0.1, 0 );
 				const geometry = new THREE.BoxGeometry( 0.1, 0.1, 0.1 );
 
-				var intersected_object = null;
+				
 
 				function onSelect() {
 
