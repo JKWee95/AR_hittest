@@ -29,6 +29,7 @@
 
 			import * as THREE from 'three';
 			import { ARButton } from 'three/addons/webxr/ARButton.js';
+			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 			let container;
 			let camera, scene, renderer;
@@ -69,7 +70,8 @@
 
 				//
 
-				const geometry = new THREE.CylinderGeometry( 0.1, 0.1, 0.2, 32 ).translate( 0, 0.1, 0 );
+				//const geometry = new THREE.CylinderGeometry( 0.1, 0.1, 0.2, 32 ).translate( 0, 0.1, 0 );
+				const geometry = new THREE.BoxGeometry( 0.1, 0.1, 0.1 );
 
 				function onSelect() {
 
@@ -94,6 +96,19 @@
 						scene.add( mesh );
 
 					}
+
+					
+
+					if (intersects.length!=0){
+						const controls = new OrbitControls( intersects[0].object, renderer.domElement );
+						controls.touches = {
+							ONE: THREE.TOUCH.ROTATE,
+							TWO: THREE.TOUCH.DOLLY_PAN
+						}
+
+						controls.update();
+					}
+					
 
 				}
 
