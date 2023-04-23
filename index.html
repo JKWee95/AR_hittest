@@ -73,7 +73,19 @@
 
 				function onSelect() {
 
-					if ( reticle.visible ) {
+					// update the picking ray with the camera and pointer position
+					raycaster.setFromCamera( pointer, camera );
+
+					// calculate objects intersecting the picking ray
+					const intersects = raycaster.intersectObjects( scene.children );
+
+					for ( let i = 0; i < intersects.length; i ++ ) {
+
+						intersects[ i ].object.material.color.set( 0xff0000 );
+
+					}
+
+					if ( reticle.visible && intersects.length==0) {
 
 						const material = new THREE.MeshPhongMaterial( { color: 0xffffff * Math.random() } );
 						const mesh = new THREE.Mesh( geometry, material );
@@ -181,18 +193,6 @@
 						}
 
 					}
-
-				}
-
-				// update the picking ray with the camera and pointer position
-				raycaster.setFromCamera( pointer, camera );
-
-				// calculate objects intersecting the picking ray
-				const intersects = raycaster.intersectObjects( scene.children );
-
-				for ( let i = 0; i < intersects.length; i ++ ) {
-
-					intersects[ i ].object.material.color.set( 0xff0000 );
 
 				}
 
