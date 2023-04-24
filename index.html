@@ -75,7 +75,7 @@
 
 				//const geometry = new THREE.CylinderGeometry( 0.1, 0.1, 0.2, 32 ).translate( 0, 0.1, 0 );
 				const geometry = new THREE.BoxGeometry( 0.1, 0.1, 0.1 );
-				const box = new THREE.Box3();
+				//const box = new THREE.Box3();
 				
 
 				function onSelect() {
@@ -97,8 +97,8 @@
 						
 						intersected_object = intersects[0].object;
 						intersected_object.material.color.set( 0xff0000 );
-						intersected_object.geometry.computeBoundingBox();
-						box.copy( intersected_object.geometry.boundingBox ).applyMatrix4( intersected_object.matrixWorld );
+						//intersected_object.geometry.computeBoundingBox();
+						//box.copy( intersected_object.geometry.boundingBox ).applyMatrix4( intersected_object.matrixWorld );
 					}
 
 					if ( reticle.visible && intersects.length==0) {
