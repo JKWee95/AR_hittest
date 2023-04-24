@@ -85,7 +85,7 @@
 					raycaster.setFromCamera( pointer, camera );
 
 					// calculate objects intersecting the picking ray
-					var intersects = raycaster.intersectObjects( scene.children );
+					const intersects = raycaster.intersectObjects( scene.children );
 
 					//for ( let i = 0; i < intersects.length; i ++ ) {
 					//
@@ -99,8 +99,7 @@
 						intersected_object = intersects[0].object;
 						intersected_object.material.color.set( 0xff0000 );
 						bbox = new THREE.BoxHelper( intersected_object, 0xffff00 );
-						scene.add( bbox );
-						bbox.update();
+						intersected_object.add( bbox );
 						//var bbox = new THREE.Box3().setFromObject(intersected_object);
 						//scene.add(bbox)
 						//intersected_object.geometry.computeBoundingBox();
