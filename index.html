@@ -100,10 +100,6 @@
 						intersected_object.material.color.set( 0xff0000 );
 						bbox = new THREE.BoxHelper( intersected_object, 0xffff00 );
 						scene.add( bbox );
-						//var bbox = new THREE.Box3().setFromObject(intersected_object);
-						//scene.add(bbox)
-						//intersected_object.geometry.computeBoundingBox();
-						//box.copy( intersected_object.geometry.boundingBox ).applyMatrix4( intersected_object.matrixWorld );
 					}
 
 					console.log(intersects.length);
@@ -122,7 +118,7 @@
 				}
 
 				controller = renderer.xr.getController( 0 );
-				controller.addEventListener( 'click', onSelect );
+				controller.addEventListener( 'select', onSelect );
 				scene.add( controller );
 
 				reticle = new THREE.Mesh(
@@ -155,9 +151,9 @@
 			window.addEventListener("touchstart", start_handler, false);
 			window.addEventListener("touchmove", handle_pinch_zoom, false);
 
-			//var rotation_start_point = 0;
-			//var current_rotation_point = 0;
-			//var new_touch_move = true;
+			var rotation_start_point = 0;
+			var current_rotation_point = 0;
+			var new_touch_move = true;
 
 			function start_handler(ev) {
 			  // If the user makes simultaneous touches, the browser will fire a
@@ -205,7 +201,7 @@
 			      //const PINCH_THRESHOLD = ev.target.clientWidth / 10;
 			      //if (diff1 >= PINCH_THRESHOLD && diff2 >= PINCH_THRESHOLD)
 			      //  ev.target.style.background = "green";
-			      /*
+			      
 			      if (new_touch_move==true && ev.targetTouches[0].clientX!=tpCache[point1].clientX){
 			      	var diffx = ev.targetTouches[0].clientX - tpCache[point1].clientX;
 			      	var diffy = ev.targetTouches[0].clientY - tpCache[point1].clientY;
@@ -217,12 +213,12 @@
 			      	}
 			      	new_touch_move=false;
 			      }
-			      */
+			      
 
 			      if (intersected_object){
 			      	intersected_object.scale.y = intersected_object.scale.y * (((new_size-original_size)/original_size)+1);
 			      	intersected_object.scale.x = intersected_object.scale.x * (((new_size-original_size)/original_size)+1);
-			      	/*
+			      	
 			      	var diffx = ev.targetTouches[0].clientX - tpCache[point1].clientX;
 			      	var diffy = ev.targetTouches[0].clientY - tpCache[point1].clientY;
 			      	if (diffx >= 0){
@@ -232,7 +228,7 @@
 			      		current_rotation_point = Math.atan(diffy / diffx) + 3.14159;
 			      	}
 			      	intersected_object.rotation.y = intersected_object.rotation.y + (current_rotation_point - rotation_start_point)*0.1;
-			      	*/
+			      	
 			      	bbox.update();
 			      }
 			      
