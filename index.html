@@ -106,6 +106,8 @@
 						//box.copy( intersected_object.geometry.boundingBox ).applyMatrix4( intersected_object.matrixWorld );
 					}
 
+					console.log(intersects.length);
+
 					if ( reticle.visible && intersects.length==0) {
 
 						const material = new THREE.MeshPhongMaterial( { color: 0xffffff * Math.random() } );
