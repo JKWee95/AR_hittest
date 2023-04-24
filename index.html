@@ -86,7 +86,7 @@
 					raycaster.setFromCamera( pointer, camera );
 
 					// calculate objects intersecting the picking ray
-					const intersects = raycaster.intersectObjects( meshes_list, recursiveFlag );
+					const intersects = raycaster.intersectObjects( meshes_list );
 
 					//for ( let i = 0; i < intersects.length; i ++ ) {
 					//
