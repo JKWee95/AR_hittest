@@ -43,6 +43,7 @@
 			const tpCache = [];
 			var intersected_object = null;
 			var bbox = null;
+			var current_selected_object = null;
 
 			init();
 			animate();
@@ -94,11 +95,13 @@
 					//
 					//}
 
-					if (intersects.length!=0){
-						
+					if (intersects.length!=0 && current_selected_object!=intersected_object){
+						bbox.visible=false;
+						current_selected_object = intersected_object;
 						intersected_object = intersects[0].object;
 						intersected_object.material.color.set( 0xff0000 );
 						bbox = new THREE.BoxHelper( intersected_object, 0xffff00 );
+						bbbox.visible=true;
 						intersected_object.add( bbox );
 						//var bbox = new THREE.Box3().setFromObject(intersected_object);
 						//scene.add(bbox)
