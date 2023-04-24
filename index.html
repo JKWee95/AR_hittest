@@ -198,6 +198,8 @@
 			      if (intersected_object){
 			      	intersected_object.scale.y = intersected_object.scale.y * (((new_size-original_size)/original_size)+1);
 			      	intersected_object.scale.x = intersected_object.scale.x * (((new_size-original_size)/original_size)+1);
+			      	box.scale.y = box.scale.y * (((new_size-original_size)/original_size)+1);
+			      	box.scale.x = box.scale.x * (((new_size-original_size)/original_size)+1);
 			      }
 			      
 			      for (let i = 0; i < ev.targetTouches.length; i++) {
