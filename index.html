@@ -201,6 +201,10 @@
 			      if (intersected_object){
 			      	intersected_object.scale.y = intersected_object.scale.y * (((new_size-original_size)/original_size)+1);
 			      	intersected_object.scale.x = intersected_object.scale.x * (((new_size-original_size)/original_size)+1);
+
+			      	var diffx = ev.targetTouches[0].clientX - tpCache[point1].clientX;
+			      	var diffy = ev.targetTouches[0].clientY - tpCache[point1].clientY;
+			      	intersected_object.rotation.x = intersected_object.rotation.x + Math.atan(diffy / diffx);
 			      	bbox.update(intersected_object);
 			      }
 			      
