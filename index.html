@@ -75,7 +75,7 @@
 
 				//const geometry = new THREE.CylinderGeometry( 0.1, 0.1, 0.2, 32 ).translate( 0, 0.1, 0 );
 				const geometry = new THREE.BoxGeometry( 0.1, 0.1, 0.1 );
-
+				const box = new THREE.Box3();
 				
 
 				function onSelect() {
@@ -86,11 +86,19 @@
 					// calculate objects intersecting the picking ray
 					const intersects = raycaster.intersectObjects( scene.children );
 
-					for ( let i = 0; i < intersects.length; i ++ ) {
+					//for ( let i = 0; i < intersects.length; i ++ ) {
+					//
+					//	intersects[ i ].object.material.color.set( 0xff0000 );
+					//	intersected_object = intersects[0].object;
+					//
+					//}
 
-						intersects[ i ].object.material.color.set( 0xff0000 );
+					if (intersects.length!=0){
+						
 						intersected_object = intersects[0].object;
-
+						intersected_object.material.color.set( 0xff0000 );
+						intersected_object.geometry.computeBoundingBox();
+						box.copy( intersected_object.geometry.boundingBox ).applyMatrix4( intersected_object.matrixWorld );
 					}
 
 					if ( reticle.visible && intersects.length==0) {
@@ -189,7 +197,7 @@
 			      	intersected_object.scale.y = intersected_object.scale.y * (((new_size-original_size)/original_size)+1);
 			      	intersected_object.scale.x = intersected_object.scale.x * (((new_size-original_size)/original_size)+1);
 			      }
-			      
+			      tpCache = [];
 			      for (let i = 0; i < ev.targetTouches.length; i++) {
 				    tpCache.push(ev.targetTouches[i]);
 				  }
