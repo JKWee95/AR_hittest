@@ -98,10 +98,8 @@
 						
 						intersected_object = intersects[0].object;
 						intersected_object.material.color.set( 0xff0000 );
-						/*
 						bbox = new THREE.BoxHelper( intersected_object, 0xffff00 );
 						scene.add( bbox );
-						*/
 						//var bbox = new THREE.Box3().setFromObject(intersected_object);
 						//scene.add(bbox)
 						//intersected_object.geometry.computeBoundingBox();
@@ -232,9 +230,8 @@
 			      		current_rotation_point = Math.atan(diffy / diffx) + 3.14159;
 			      	}
 			      	intersected_object.rotation.y = intersected_object.rotation.y + (current_rotation_point - rotation_start_point)*0.1;
-			      	
-			      	bbox.update();
 			      	*/
+			      	bbox.update(intersected_object);
 			      }
 			      
 			      for (let i = 0; i < ev.targetTouches.length; i++) {
