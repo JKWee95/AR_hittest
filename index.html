@@ -153,9 +153,9 @@
 			window.addEventListener("touchstart", start_handler, false);
 			window.addEventListener("touchmove", handle_pinch_zoom, false);
 
-			var rotation_start_point = 0;
-			var current_rotation_point = 0;
-			var new_touch_move = true;
+			//var rotation_start_point = 0;
+			//var current_rotation_point = 0;
+			//var new_touch_move = true;
 
 			function start_handler(ev) {
 			  // If the user makes simultaneous touches, the browser will fire a
@@ -171,7 +171,7 @@
 			    }
 			  }
 
-			  new_touch_move = true;
+			  //new_touch_move = true;
 			}
 
 			// This is a very basic 2-touch move/pinch/zoom handler that does not include
