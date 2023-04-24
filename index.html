@@ -43,6 +43,7 @@
 			const tpCache = [];
 			var intersected_object = null;
 			var bbox = null;
+			var selected_object = null;
 			var meshes_list = [];
 
 			init();
@@ -95,8 +96,11 @@
 					//
 					//}
 
-					if (intersects.length!=0){
+					if (intersects.length!=0 && selected_object!=intersects[0].object){
+						
 						intersected_object = intersects[0].object;
+						selected_object = intersected_object;
+						scene.remove(bbox);
 						intersected_object.material.color.set( 0xff0000 );
 						bbox = new THREE.BoxHelper( intersected_object, 0xffff00 );
 						scene.add( bbox );
