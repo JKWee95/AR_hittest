@@ -186,15 +186,8 @@
 				// calculate objects intersecting the picking ray
 				const intersects = raycaster.intersectObjects( meshes_list );
 
-				if (intersects.length!=0 && selected_object!=intersects[0].object){
-					intersected_object = intersects[0].object;
-					selected_object = intersected_object;
-					scene.remove(bbox);
-					intersected_object.material.color.set( 0xff0000 );
-					bbox = new THREE.BoxHelper( intersected_object, 0xffff00 );
-					scene.add( bbox );
-				}
-				else if (intersects.length!=0){
+				if (intersects.length!=0 && selected_object==intersects[0].object){
+					/*
 					const point1 = tpCache.findLastIndex(
 			      	  (tp) => tp.identifier === ev.targetTouches[0].identifier
 				    );
@@ -205,7 +198,11 @@
 				      tpCache[point1].clientY - ev.targetTouches[0].clientY
 				    );
 				    console.log(diffx, diffy);
-				    intersected_object.position.x = intersected_object.position.x + diffx;
+				    */
+				    pointer2.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+					pointer2.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+				    intersected_object.position.x = pointer2.x;
+				    intersected_object.position.x = pointer2.y;
 				}
 
 			  }
