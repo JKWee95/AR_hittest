@@ -116,6 +116,7 @@
 						mesh.scale.y = Math.random() * 2 + 1;
 						scene.add( mesh );
 						meshes_list.push(mesh);
+						console.log(mesh.position.x, mesh.position.y)
 					}
 					
 
@@ -187,8 +188,8 @@
 				// calculate objects intersecting the picking ray
 				const intersects = raycaster.intersectObjects( meshes_list );
 
-				pointer2.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-				pointer2.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+				pointer2.x = ( ev.clientX / window.innerWidth ) * 2 - 1;
+				pointer2.y = - ( ev.clientY / window.innerHeight ) * 2 + 1;
 				console.log(pointer2.x, pointer2.y);
 
 				if (intersects.length!=0 && selected_object==intersects[0].object){
