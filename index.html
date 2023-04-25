@@ -179,7 +179,18 @@
 			// This is a very basic 2-touch move/pinch/zoom handler that does not include
 			// error handling, only handles horizontal moves, etc.
 			function handle_pinch_zoom(ev) {
-			  if (ev.targetTouches.length === 2 && ev.changedTouches.length === 2) {
+			  if (ev.targetTouches.length === 1 && ev.changedTouches.length === 1){
+			  	const point1 = tpCache.findLastIndex(
+			      (tp) => tp.identifier === ev.targetTouches[0].identifier
+			    );
+			    const diff1 = Math.abs(
+			      tpCache[point1].clientX - ev.targetTouches[0].clientX
+			    );
+			    if (intersected_object){
+			    	intersected_object.position.x = intersected_object.position.x+2;
+			    }
+			  }
+			  else if (ev.targetTouches.length === 2 && ev.changedTouches.length === 2) {
 			    // Check if the two target touches are the same ones that started
 			    // the 2-touch
 			    const point1 = tpCache.findLastIndex(
