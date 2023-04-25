@@ -187,6 +187,10 @@
 				// calculate objects intersecting the picking ray
 				const intersects = raycaster.intersectObjects( meshes_list );
 
+				pointer2.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+				pointer2.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+				console.log(pointer2.x, pointer2.y);
+
 				if (intersects.length!=0 && selected_object==intersects[0].object){
 					/*
 					const point1 = tpCache.findLastIndex(
@@ -200,11 +204,8 @@
 				    );
 				    console.log(diffx, diffy);
 				    */
-
-				    pointer2.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-					pointer2.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 				    intersected_object.position.x = pointer2.x;
-				    intersected_object.position.x = pointer2.y;
+				    intersected_object.position.y = pointer2.y;
 				}
 
 			  }
