@@ -178,6 +178,7 @@
 
 			// This is a very basic 2-touch move/pinch/zoom handler that does not include
 			// error handling, only handles horizontal moves, etc.
+			const pointer2 = new THREE.Vector2();
 			function handle_pinch_zoom(ev) {
 			  if (ev.targetTouches.length === 1 && ev.changedTouches.length === 1){
 			  	// update the picking ray with the camera and pointer position
@@ -199,6 +200,7 @@
 				    );
 				    console.log(diffx, diffy);
 				    */
+
 				    pointer2.x = ( event.clientX / window.innerWidth ) * 2 - 1;
 					pointer2.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 				    intersected_object.position.x = pointer2.x;
